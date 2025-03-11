@@ -10,11 +10,13 @@ interface Project {
   haveLink: boolean;
   link?: string;
   icon?: React.ReactNode;
+  tags: string[];
 }
 
 const ProjectCard = ({
   title,
   description,
+  tags,
   icon,
   link,
   haveLink,
@@ -37,6 +39,16 @@ const ProjectCard = ({
     <p className="dark:text-gray-300 text-gray-500 text-sm leading-5 font-mono">
       {description}
     </p>
+    <div className="flex flex-wrap gap-2 mt-2">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="mt-1 bg-gray-200 dark:bg-gray-200 text-black px-2 py-0.5 rounded-full text-sm"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
   </div>
 );
 
@@ -49,20 +61,25 @@ const projects: Project[] = [
     icon: <Gamepad2 className="w-10 mb-2" />,
     link: "https://github.com/lauchydev/tetris-ai",
     haveLink: true,
+    tags: ["Java", "Swing", "Socket"],
   },
   {
     id: 2,
     title: "Lead Database Engineer",
-    description: "This is a description of project 2.",
+    description:
+      "Designed and implemented a sizable database system using MySQL and PostgreSQL for a fashion retailer.",
     icon: <DatabaseIcon className="w-10 mb-2" />,
     haveLink: false,
+    tags: ["MySQL", "PostgreSQL"],
   },
   {
     id: 3,
-    title: "Project 3",
-    description: "This is a description of project 3.",
+    title: "Web Developer",
+    description:
+      "Using agile development methodologies, I worked with a team of developers from the ground up to create a web application for a research company.",
     icon: <Globe className="w-10 mb-2" />,
     haveLink: false,
+    tags: ["TailwindCSS", "Express", "Node.js", "Angular", "MongoDB"],
   },
 ];
 

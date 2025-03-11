@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import assets from "@/assets/profile_img.png";
 import { Button } from "@/components/ui/button";
@@ -22,6 +24,12 @@ export default function Hero() {
               variant="default"
               size="default"
               className="flex items-center w-fit cursor-pointer "
+              onClick={() => {
+                window.open(
+                  "https://drive.google.com/file/d/1L2FNI0DpQhISbGqRWiUZIM1H-dHPL8eo/view?usp=sharing",
+                  "_blank"
+                );
+              }}
             >
               Resume <Download />
             </Button>

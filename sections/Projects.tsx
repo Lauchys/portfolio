@@ -22,7 +22,7 @@ const ProjectCard = ({
   haveLink,
 }: Omit<Project, "id">) => (
   <div
-    className="dark:bg-[#212121] p-4 rounded-lg cursor-pointer border-2 border-gray-200 dark:border-[#222222] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+    className="dark:bg-[#212121] p-4 rounded-lg cursor-pointer border-2 border-gray-200  dark:border-stone-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
     onClick={() => {
       if (haveLink) {
         window.open(link, "_blank");
@@ -33,9 +33,11 @@ const ProjectCard = ({
       {haveLink && (
         <ArrowUpRight className="absolute top-0 right-0 w-10 cursor-pointer" />
       )}
-      <div className="flex items-center">{icon}</div>
+      <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center justify-center">{icon}</div>
+        <h2 className="text-lg font-bold">{title}</h2>
+      </div>
     </div>
-    <h2 className="text-lg my-4 font-bold">{title}</h2>
     <p className="dark:text-gray-300 text-gray-500 text-sm leading-5 font-mono">
       {description}
     </p>
@@ -58,7 +60,7 @@ const projects: Project[] = [
     title: "Tetris AI",
     description:
       "Classic Tetris game with a twist. Score tracking, increasing difficulty, local or online multiplayer, and a player-vs-AI mode.",
-    icon: <Gamepad2 className="w-10 mb-2" />,
+    icon: <Gamepad2 className="w-5 h-5" />,
     link: "https://github.com/lauchydev/tetris-ai",
     haveLink: true,
     tags: ["Java", "Swing", "Socket"],
@@ -68,7 +70,7 @@ const projects: Project[] = [
     title: "Lead Database Engineer",
     description:
       "Designed and implemented a sizable database system using MySQL and PostgreSQL for a fashion retailer.",
-    icon: <DatabaseIcon className="w-10 mb-2" />,
+    icon: <DatabaseIcon className="w-5 h-5" />,
     haveLink: false,
     tags: ["MySQL", "PostgreSQL"],
   },
@@ -77,7 +79,7 @@ const projects: Project[] = [
     title: "Web Developer",
     description:
       "Using agile development methodologies, I worked with a team of developers from the ground up to create a web application for a research company.",
-    icon: <Globe className="w-10 mb-2" />,
+    icon: <Globe className="w-5 h-5" />,
     haveLink: false,
     tags: ["TailwindCSS", "Express", "Node.js", "Angular", "MongoDB"],
   },
@@ -85,10 +87,10 @@ const projects: Project[] = [
 
 const Projects = () => {
   return (
-    <div id="projects" className="w-full px-[12%] py-10 mt-10 scroll-mt-20">
+    <div id="projects" className="w-full px-[12%] py-10 mt-5 scroll-mt-20">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold">Experience</h1>
-        <div className="grid grid-cols-1 gap-6 my-10">
+        <h1 className="text-4xl font-bold mb-10">Experience</h1>
+        <div className="grid grid-cols-1 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}
